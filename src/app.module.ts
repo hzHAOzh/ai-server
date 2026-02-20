@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -21,6 +22,9 @@ import { AppService } from './app.service';
       }),
       inject: [ConfigService],
     }),
+
+    // 导入 UserModule 来处理用户相关路由和服务
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
